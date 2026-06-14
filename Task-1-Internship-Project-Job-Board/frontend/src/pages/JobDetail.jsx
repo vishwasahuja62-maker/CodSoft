@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/ToastProvider';
@@ -525,8 +526,8 @@ export default function JobDetail() {
         </motion.div>
       </div>
 
-      {showApplyModal && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.8)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000 }} onClick={() => !applying && setShowApplyModal(false)}>
+      {showApplyModal && createPortal(
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.8)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }} onClick={() => !applying && setShowApplyModal(false)}>
           <motion.div initial={{ scale: 0.95, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} className="glass" style={{ width: '100%', maxWidth: '650px', padding: '0', overflow: 'hidden', borderRadius: '24px', border: '1px solid rgba(129, 140, 248, 0.3)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }} onClick={(e) => e.stopPropagation()}>
               
               <div style={{ padding: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', background: 'linear-gradient(to right, rgba(129, 140, 248, 0.1), transparent)' }}>
@@ -647,7 +648,7 @@ export default function JobDetail() {
               )}
             </motion.div>
           </div>
-        )}
+        ), document.body)}
       <style>{`
         @media (max-width: 768px) {
           .job-detail-grid { grid-template-columns: 1fr !important; }
