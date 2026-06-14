@@ -11,8 +11,8 @@ export const AuthProvider = ({ children }) => {
 
   // Restore session on startup
   useEffect(() => {
-    const storedToken = localStorage.getItem('jb_token');
-    const storedUser = localStorage.getItem('jb_user');
+    const storedToken = sessionStorage.getItem('jb_token');
+    const storedUser = sessionStorage.getItem('jb_user');
     
     if (storedToken && storedUser) {
       try {
@@ -20,8 +20,8 @@ export const AuthProvider = ({ children }) => {
         setUser(JSON.parse(storedUser));
       } catch (e) {
         console.error('Error parsing stored session', e);
-        localStorage.removeItem('jb_token');
-        localStorage.removeItem('jb_user');
+        sessionStorage.removeItem('jb_token');
+        sessionStorage.removeItem('jb_user');
       }
     }
     setLoading(false);
@@ -51,8 +51,8 @@ export const AuthProvider = ({ children }) => {
 
       setToken(data.token);
       setUser(data.user);
-      localStorage.setItem('jb_token', data.token);
-      localStorage.setItem('jb_user', JSON.stringify(data.user));
+      sessionStorage.setItem('jb_token', data.token);
+      sessionStorage.setItem('jb_user', JSON.stringify(data.user));
       return data.user;
     } catch (error) {
       console.error('Login service error:', error);
@@ -84,8 +84,8 @@ export const AuthProvider = ({ children }) => {
 
       setToken(data.token);
       setUser(data.user);
-      localStorage.setItem('jb_token', data.token);
-      localStorage.setItem('jb_user', JSON.stringify(data.user));
+      sessionStorage.setItem('jb_token', data.token);
+      sessionStorage.setItem('jb_user', JSON.stringify(data.user));
       return data.user;
     } catch (error) {
       console.error('Register service error:', error);
@@ -96,13 +96,13 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setToken(null);
     setUser(null);
-    localStorage.removeItem('jb_token');
-    localStorage.removeItem('jb_user');
+    sessionStorage.removeItem('jb_token');
+    sessionStorage.removeItem('jb_user');
   };
 
   const syncUser = (updatedUser) => {
     setUser(updatedUser);
-    localStorage.setItem('jb_user', JSON.stringify(updatedUser));
+    sessionStorage.setItem('jb_user', JSON.stringify(updatedUser));
   };
 
   return (
