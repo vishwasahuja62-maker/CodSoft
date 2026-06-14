@@ -6,7 +6,7 @@ export const getStaticUrl = (path) => {
   return `${base}${path}`;
 };
 function getHeaders() {
-  const token = localStorage.getItem('jb_token');
+  const token = sessionStorage.getItem('jb_token');
   const headers = {
     'Content-Type': 'application/json',
   };
@@ -19,7 +19,7 @@ function getHeaders() {
 export async function apiRequest(endpoint, options = {}) {
   const url = `${API_BASE}${endpoint}`;
   
-  const token = localStorage.getItem('jb_token');
+  const token = sessionStorage.getItem('jb_token');
   const headers = options.isMultipart ? {} : { 'Content-Type': 'application/json' };
   
   if (token) {

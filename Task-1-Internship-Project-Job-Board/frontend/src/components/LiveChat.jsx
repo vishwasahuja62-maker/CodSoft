@@ -17,6 +17,11 @@ export default function LiveChat() {
   const [inputText, setInputText] = useState('');
   const socketRef = useRef(null);
   const messagesEndRef = useRef(null);
+  const selectedContactRef = useRef(null);
+
+  useEffect(() => {
+    selectedContactRef.current = selectedContact;
+  }, [selectedContact]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -27,7 +32,7 @@ export default function LiveChat() {
   }, [messages]);
 
   useEffect(() => {
-    const token = localStorage.getItem('jb_token');
+    const token = sessionStorage.getItem('jb_token');
     if (!token) return;
 
     const socket = io(SOCKET_URL, {
@@ -40,7 +45,8 @@ export default function LiveChat() {
 
     socket.on('new_message', (msg) => {
       setMessages((prev) => {
-        if (selectedContact && (msg.sender_id === selectedContact.contact_id || msg.sender_id === selectedContact._id)) {
+        const currentContact = selectedContactRef.current;
+        if (currentContact && (msg.sender_id === currentContact.contact_id || msg.sender_id === currentContact._id)) {
           const exists = prev.some((m) => m._id === msg._id || m.id === msg.id);
           return exists ? prev : [...prev, msg];
         }
@@ -48,6 +54,7 @@ export default function LiveChat() {
       });
 
       setContacts((prev) => {
+        const currentContact = selectedContactRef.current;
         const existing = prev.find(
           (c) => c.contact_id === msg.sender_id || c._id === msg.sender_id
         );
@@ -57,7 +64,7 @@ export default function LiveChat() {
         }
         return prev.map((c) => {
           if (c.contact_id === msg.sender_id || c._id === msg.sender_id) {
-            return { ...c, lastMsg: msg.text || msg.body, unread: selectedContact?.contact_id !== msg.sender_id ? (c.unread || 0) + 1 : c.unread, time: new Date().toLocaleTimeString() };
+            return { ...c, lastMsg: msg.text || msg.body, unread: currentContact?.contact_id !== msg.sender_id ? (c.unread || 0) + 1 : c.unread, time: new Date().toLocaleTimeString() };
           }
           return c;
         });
@@ -70,11 +77,13 @@ export default function LiveChat() {
           (c.contact_id === contactId || c._id === contactId) ? { ...c, unread: 0 } : c
         )
       );
-      if (selectedContact && (selectedContact.contact_id === contactId || selectedContact._id === contactId)) {
-        setMessages((prev) =>
-          prev.map((m) => ({ ...m, read: true }))
-        );
-      }
+      setMessages((prev) => {
+        const currentContact = selectedContactRef.current;
+        if (currentContact && (currentContact.contact_id === contactId || currentContact._id === contactId)) {
+          return prev.map((m) => ({ ...m, read: true }));
+        }
+        return prev;
+      });
     });
 
     socketRef.current = socket;
@@ -83,7 +92,7 @@ export default function LiveChat() {
       socket.disconnect();
       socketRef.current = null;
     };
-  }, [selectedContact]);
+  }, [loadContacts]);
 
   const loadContacts = useCallback(async () => {
     setContactsLoading(true);
