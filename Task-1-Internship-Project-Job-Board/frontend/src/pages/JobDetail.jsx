@@ -184,6 +184,17 @@ export default function JobDetail() {
     { code: 'KRW', name: 'South Korean Won' },
   ];
 
+  useEffect(() => {
+    if (showApplyModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showApplyModal]);
+
   const handleApplyClick = () => {
     if (!user) {
       navigate('/login', { state: { from: location } });
@@ -527,8 +538,8 @@ export default function JobDetail() {
       </div>
 
       {showApplyModal && createPortal(
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.8)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }} onClick={() => !applying && setShowApplyModal(false)}>
-          <motion.div initial={{ scale: 0.95, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} className="glass" style={{ width: '100%', maxWidth: '650px', padding: '0', overflow: 'hidden', borderRadius: '24px', border: '1px solid rgba(129, 140, 248, 0.3)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }} onClick={(e) => e.stopPropagation()}>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.8)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', zIndex: 9999, overflowY: 'auto', padding: '2rem 1rem' }} onClick={() => !applying && setShowApplyModal(false)}>
+          <motion.div initial={{ scale: 0.95, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} className="glass" style={{ width: '100%', maxWidth: '650px', margin: 'auto', padding: '0', overflow: 'hidden', borderRadius: '24px', border: '1px solid rgba(129, 140, 248, 0.3)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }} onClick={(e) => e.stopPropagation()}>
               
               <div style={{ padding: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', background: 'linear-gradient(to right, rgba(129, 140, 248, 0.1), transparent)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
