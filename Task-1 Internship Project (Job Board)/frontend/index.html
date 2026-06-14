@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>ElevateHire — Your Next Career Breakthrough</title>
+  <meta name="description" content="ElevateHire is a premium job board connecting top talent with elite teams. Find your next dream role or hire the best candidates faster." />
+  <meta name="keywords" content="jobs, career, hiring, tech jobs, software engineer, remote work" />
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="ElevateHire" />
+  <meta property="og:description" content="Connecting top talent with elite teams. Find your next dream role." />
+  <meta property="og:type" content="website" />
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#818cf8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

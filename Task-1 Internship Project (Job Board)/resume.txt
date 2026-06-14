@@ -1,0 +1,11 @@
+JANE DOE RESUME
+Title: Senior UI Engineer
+Email: candidate@example.com
+Skills: React, CSS Grid, HTML5, JavaScript
+
+EXPERIENCE:
+- Frontend Lead at TechCorp (2023 - 2026)
+  Designed modern glassmorphic enterprise interfaces using custom Vanilla CSS systems.
+
+EDUCATION:
+- B.S. in Computer Science, MIT (2019 - 2023)
