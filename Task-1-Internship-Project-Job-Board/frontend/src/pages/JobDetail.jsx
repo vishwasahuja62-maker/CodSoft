@@ -648,7 +648,7 @@ export default function JobDetail() {
               )}
             </motion.div>
           </div>
-        ), document.body)}
+        , document.body)}
       <style>{`
         @media (max-width: 768px) {
           .job-detail-grid { grid-template-columns: 1fr !important; }
