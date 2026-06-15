@@ -162,100 +162,100 @@ export default function AdminDashboard() {
               ) : (
                 <>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
-                  <div className="card glass stat-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.1, color: '#818cf8' }}><Users size={120} /></div>
-                    <p style={{ color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>Total Users</p>
-                    <h3 style={{ fontSize: '3rem', fontWeight: 800, color: 'white', marginTop: '0.5rem' }}>{stats?.totalUsers || 0}</h3>
-                    <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <Activity size={14} /> {getRoleCount('candidate')} candidates, {getRoleCount('employer')} employers
-                    </p>
-                  </div>
-                  <div className="card glass stat-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.1, color: '#34d399' }}><Briefcase size={120} /></div>
-                    <p style={{ color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>Total Jobs</p>
-                    <h3 style={{ fontSize: '3rem', fontWeight: 800, color: '#34d399', marginTop: '0.5rem' }}>{stats?.totalJobs || 0}</h3>
-                    <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.5rem' }}>Active listings</p>
-                  </div>
-                  <div className="card glass stat-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.1, color: '#c084fc' }}><FileText size={120} /></div>
-                    <p style={{ color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>Applications</p>
-                    <h3 style={{ fontSize: '3rem', fontWeight: 800, color: '#c084fc', marginTop: '0.5rem' }}>{stats?.totalApplications || 0}</h3>
-                    <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.5rem' }}>Total submissions</p>
-                  </div>
-                  <div className="card glass stat-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.1, color: '#fbbf24' }}><Mail size={120} /></div>
-                    <p style={{ color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>Messages</p>
-                    <h3 style={{ fontSize: '3rem', fontWeight: 800, color: '#fbbf24', marginTop: '0.5rem' }}>{stats?.totalMessages || 0}</h3>
-                    <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.5rem' }}>Total sent</p>
-                  </div>
-                  <div className="card glass stat-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                      {stats?.usersByRole?.map(r => (
-                        <div key={r.role} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <span style={{ color: '#cbd5e1', textTransform: 'capitalize' }}>{r.role}</span>
-                          <span style={{ color: 'white', fontWeight: 700 }}>{r.count}</span>
-                        </div>
-                      ))}
+                    <div className="card glass stat-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden' }}>
+                      <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.1, color: '#818cf8' }}><Users size={120} /></div>
+                      <p style={{ color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>Total Users</p>
+                      <h3 style={{ fontSize: '3rem', fontWeight: 800, color: 'white', marginTop: '0.5rem' }}>{stats?.totalUsers || 0}</h3>
+                      <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <Activity size={14} /> {getRoleCount('candidate')} candidates, {getRoleCount('employer')} employers
+                      </p>
+                    </div>
+                    <div className="card glass stat-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden' }}>
+                      <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.1, color: '#34d399' }}><Briefcase size={120} /></div>
+                      <p style={{ color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>Total Jobs</p>
+                      <h3 style={{ fontSize: '3rem', fontWeight: 800, color: '#34d399', marginTop: '0.5rem' }}>{stats?.totalJobs || 0}</h3>
+                      <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.5rem' }}>Active listings</p>
+                    </div>
+                    <div className="card glass stat-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden' }}>
+                      <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.1, color: '#c084fc' }}><FileText size={120} /></div>
+                      <p style={{ color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>Applications</p>
+                      <h3 style={{ fontSize: '3rem', fontWeight: 800, color: '#c084fc', marginTop: '0.5rem' }}>{stats?.totalApplications || 0}</h3>
+                      <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.5rem' }}>Total submissions</p>
+                    </div>
+                    <div className="card glass stat-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden' }}>
+                      <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.1, color: '#fbbf24' }}><Mail size={120} /></div>
+                      <p style={{ color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>Messages</p>
+                      <h3 style={{ fontSize: '3rem', fontWeight: 800, color: '#fbbf24', marginTop: '0.5rem' }}>{stats?.totalMessages || 0}</h3>
+                      <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.5rem' }}>Total sent</p>
+                    </div>
+                    <div className="card glass stat-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {stats?.usersByRole?.map(r => (
+                          <div key={r.role} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <span style={{ color: '#cbd5e1', textTransform: 'capitalize' }}>{r.role}</span>
+                            <span style={{ color: 'white', fontWeight: 700 }}>{r.count}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
-                  <div className="card glass stat-card" style={{ padding: '2rem' }}>
-                    <div style={{ marginBottom: '1.5rem' }}>
-                      <h3 style={{ fontSize: '1.2rem', color: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Briefcase size={20} color="#34d399" /> Jobs by Type
-                      </h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
+                    <div className="card glass stat-card" style={{ padding: '2rem' }}>
+                      <div style={{ marginBottom: '1.5rem' }}>
+                        <h3 style={{ fontSize: '1.2rem', color: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <Briefcase size={20} color="#34d399" /> Jobs by Type
+                        </h3>
+                      </div>
+                      <div style={{ height: '300px', width: '100%' }}>
+                        <ResponsiveContainer width="100%" height="100%">
+                          <BarChart data={stats?.jobsByType || []} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                            <XAxis dataKey="type" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
+                            <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
+                            <Tooltip
+                              contentStyle={{ background: '#0a0f28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px' }}
+                              itemStyle={{ color: 'white' }}
+                              cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                            />
+                            <Bar dataKey="count" fill="#34d399" radius={[4, 4, 0, 0]} barSize={40} />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
                     </div>
-                    <div style={{ height: '300px', width: '100%' }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={stats?.jobsByType || []} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-                          <XAxis dataKey="type" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
-                          <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
-                          <Tooltip
-                            contentStyle={{ background: '#0a0f28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px' }}
-                            itemStyle={{ color: 'white' }}
-                            cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                          />
-                          <Bar dataKey="count" fill="#34d399" radius={[4, 4, 0, 0]} barSize={40} />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
 
-                  <div className="card glass stat-card" style={{ padding: '2rem' }}>
-                    <div style={{ marginBottom: '1.5rem' }}>
-                      <h3 style={{ fontSize: '1.2rem', color: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <FileText size={20} color="#c084fc" /> Applications by Status
-                      </h3>
-                    </div>
-                    <div style={{ height: '300px', width: '100%' }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <PieChart>
-                          <Pie
-                            data={stats?.applicationsByStatus || []}
-                            cx="50%"
-                            cy="50%"
-                            innerRadius={70}
-                            outerRadius={100}
-                            paddingAngle={5}
-                            dataKey="count"
-                            nameKey="status"
-                            stroke="none"
-                          >
-                            {(stats?.applicationsByStatus || []).map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                            ))}
-                          </Pie>
-                          <Tooltip
-                            contentStyle={{ background: '#0a0f28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', textTransform: 'capitalize' }}
-                            itemStyle={{ color: 'white' }}
-                          />
-                          <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ textTransform: 'capitalize', color: '#94a3b8', fontSize: '0.85rem' }} />
-                        </PieChart>
-                      </ResponsiveContainer>
+                    <div className="card glass stat-card" style={{ padding: '2rem' }}>
+                      <div style={{ marginBottom: '1.5rem' }}>
+                        <h3 style={{ fontSize: '1.2rem', color: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <FileText size={20} color="#c084fc" /> Applications by Status
+                        </h3>
+                      </div>
+                      <div style={{ height: '300px', width: '100%' }}>
+                        <ResponsiveContainer width="100%" height="100%">
+                          <PieChart>
+                            <Pie
+                              data={stats?.applicationsByStatus || []}
+                              cx="50%"
+                              cy="50%"
+                              innerRadius={70}
+                              outerRadius={100}
+                              paddingAngle={5}
+                              dataKey="count"
+                              nameKey="status"
+                              stroke="none"
+                            >
+                              {(stats?.applicationsByStatus || []).map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                              ))}
+                            </Pie>
+                            <Tooltip
+                              contentStyle={{ background: '#0a0f28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', textTransform: 'capitalize' }}
+                              itemStyle={{ color: 'white' }}
+                            />
+                            <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ textTransform: 'capitalize', color: '#94a3b8', fontSize: '0.85rem' }} />
+                          </PieChart>
+                        </ResponsiveContainer>
+                      </div>
                     </div>
                   </div>
-                </div>
                 </>
               )}
             </motion.div>
